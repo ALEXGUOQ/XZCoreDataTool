@@ -21,11 +21,12 @@
     [super viewDidLoad];
     
     
-    
-    
-    
+    [self creat];
     
     [self get];
+    
+    
+    
     
   
 }
@@ -33,7 +34,7 @@
 //创建一个实体
 -(void)creat{
     
-    NSDictionary *dic = @{@"name":@"lizhiwei",@"age":@"24"};
+    NSDictionary *dic = @{@"name":@"lizhi",@"age":@"21"};
     [XZCoreDataTool creatEntityWithName:@"Person" AndAttribute:dic];
 }
 

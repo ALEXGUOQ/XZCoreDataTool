@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XZCoreData.h"
 
 @interface XZCoreDataTool : NSObject
 
@@ -44,4 +45,14 @@
  */
 +(void)updateEntityWithName:(NSString *)entityName AndAttribute:(NSDictionary*)attribute AtIndex:(NSUInteger)index;
 
+
+/**
+ *  根据条件抓取实体
+ *
+ *  @param entityName 实体名
+ *  @param request    查询条件
+ *
+ *  @return 返回符合条件的实体
+ */
++(NSMutableArray*)getEntityWithName:(NSString*)entityName AndFetchRequest:(NSFetchRequest*)request;
 @end
