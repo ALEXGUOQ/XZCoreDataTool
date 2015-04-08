@@ -7,7 +7,6 @@
 //
 
 #import "XZCoreDataTool.h"
-#import "XZCoreData.h"
 
 @implementation XZCoreDataTool
 
@@ -139,6 +138,41 @@
     }
     
 }
+
+/**
+ *  根据条件抓取实体
+ *
+ *  @param entityName 实体名
+ *  @param request    查询条件
+ *
+ *  @return 返回符合条件的实体
+ */
++(NSMutableArray*)getEntityWithName:(NSString*)entityName AndFetchRequest:(NSFetchRequest*)request{
+    XZCoreData *cd = [XZCoreData sharedXZCoreData];
+    NSManagedObjectContext *managedObjectContext = [cd managedObjectContext];
+    
+    
+    
+    
+    // 设置要抓取哪种类型的实体
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName
+                                              inManagedObjectContext:managedObjectContext];
+    
+    // 设置抓取实体
+    [request setEntity:entity];
+    NSError *error = nil;
+    // 执行抓取数据的请求，返回符合条件的数据
+    NSMutableArray *entityArray = [[managedObjectContext
+                                    executeFetchRequest:request error:&error] mutableCopy];
+    
+    if (error) {
+        NSLog(@"error = %@",error);
+    }
+    
+    
+    return entityArray;
+}
+
 
 
 @end

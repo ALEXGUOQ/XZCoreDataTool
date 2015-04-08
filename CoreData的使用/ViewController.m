@@ -21,14 +21,27 @@
     [super viewDidLoad];
     
     
-    [self creat];
+//    [self creat];
     
-    [self get];
-    
+//    [self get];
     
     
     
   
+}
+
+//根据条件查询
+-(void)getEntityWithFetchRequest{
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSPredicate *pre = [NSPredicate predicateWithFormat:@"age like %@",@"21"];
+    request.predicate = pre;
+    NSArray *persons =[XZCoreDataTool getEntityWithName:@"Person" AndFetchRequest:request];
+    
+    for (Person *p in persons) {
+        NSLog(@"name = %@ age = %@",p.name,p.age);
+        
+    }
 }
 
 //创建一个实体

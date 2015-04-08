@@ -153,6 +153,7 @@
     
     
     
+    
     // 设置要抓取哪种类型的实体
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName
                                               inManagedObjectContext:managedObjectContext];
@@ -163,6 +164,10 @@
     // 执行抓取数据的请求，返回符合条件的数据
     NSMutableArray *entityArray = [[managedObjectContext
                                     executeFetchRequest:request error:&error] mutableCopy];
+    
+    if (error) {
+        NSLog(@"error = %@",error);
+    }
     
     
     return entityArray;
